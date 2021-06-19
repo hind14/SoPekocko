@@ -1,14 +1,18 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const path = require('path');
+const path = require('path');;
 
 const sauceRoutes = require('./routes/sauces');
 const userRoutes = require('./routes/user');
 
 const app = express();
 
-app.use(bodyParser.json());
+//Deamnde du package helmet pour sécuriser Express
+
+const helmet = require('helmet');
+app.use(helmet())
+
+app.use(express.json());
 
 mongoose.connect('mongodb+srv://So_pekocko:So7arYe6er@cluster0.9ggbm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
     {

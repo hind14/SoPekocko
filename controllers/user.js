@@ -1,11 +1,15 @@
+// Importation du packege de cryptage brcypt pour mot de passe
+
 const bcrypt = require('bcrypt');
+
+
 const jwt = require('jsonwebtoken');
 
 const User = require('../models/user');
 
 exports.signup = (req, res, next) => {
-  console.log(req.body.password)
-  bcrypt.hash(req.body.password, 10)
+// Fonctiion qui crypte le mdp
+  bcrypt.hash(req.body.password, /*salt: algorithme de hashage*/ 10)
     .then(hash => {
       const user = new User({
         email: req.body.email,
