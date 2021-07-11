@@ -9,14 +9,14 @@ const userRoutes = require('./routes/user');
 
 const app = express();
 
-//Deamnde du package helmet pour sécuriser Express
+//Demande du package helmet pour sécuriser Express
 
 const helmet = require('helmet');
 app.use(helmet())
 
 app.use(express.json());
 
-mongoose.connect('mongodb+srv://So_pekocko:So7arYe6er@cluster0.9ggbm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+mongoose.connect(`mongodb+srv://${process.env.mongoadmin}:${process.env.mongopassword}@cluster0.9ggbm.mongodb.net/${process.env.mongoDB}?retryWrites=true&w=majority`,
     {
         useNewUrlParser: true,
         useUnifiedTopology: true
